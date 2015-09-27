@@ -1,17 +1,26 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+<?php
+session_start();
+$ID = "08886b22-258e-42cd-a5f2-975b1138f506";
+$PW = "horsebatterystaplel";
 
-# Custom for Visual Studio
-*.cs     diff=csharp
+$address = $_SESSION['parseAddy'];
 
-# Standard to msysgit
-*.doc	 diff=astextplain
-*.DOC	 diff=astextplain
-*.docx diff=astextplain
-*.DOCX diff=astextplain
-*.dot  diff=astextplain
-*.DOT  diff=astextplain
-*.pdf  diff=astextplain
-*.PDF	 diff=astextplain
-*.rtf	 diff=astextplain
-*.RTF	 diff=astextplain
+$bal = json_decode(file_get_contents("https://blockchain.info/merchant/$ID/address_balance?password=$PW&address=$address&confirmations=0"), true);
+
+$parseBal = bal[balance];
+
+echo "The address<br>";
+echo $address;
+echo "<br> Has a balance of <br>";
+echo $parseBal;
+echo "satohis";
+
+?>
+<html>
+<body>
+<br>
+<form action="checkB.php">
+<inoute type="submit" value="Check Balance">
+</form>
+</body>
+</html>
